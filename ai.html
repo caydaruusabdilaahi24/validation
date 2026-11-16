@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validation</title>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: rgb(213, 246, 148);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    main{
+        background-color: rgb(250, 139, 4);
+        padding: 20px;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 8px;
+    }
+   h1,h2{
+    background-color: aqua;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 5px;
+   }
+   h2{
+    background-color: azure;
+   }
+   main p{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+   }
+    label{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+    form{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    form input,
+    form button, .gender{
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        width: 100%;
+        margin-top: 6px;
+        height: 35px;
+        padding: 5px;
+    }
+    .error{
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    button{
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <main>
+        <h1>Open Registration</h1>
+        <h2>welcome Alhuda secondarry</h2>
+        <p>waxaan idinku soo dhawaynanaa dugsiga sare alhuda secondary school gacmo furan kusoo dhawaada</p>
+    
+        <form id="registrationForm" action="validate">
+            <label for="username">username</label>
+            <input 
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter your name"
+                autocomplete="username">
+            <p id="usernameError" class="error"></p>
+
+            <label for="school">school</label>
+            <input 
+                type="text"
+                name="school"
+                id="school"
+                placeholder="Enter your previous school">
+            <p id="schoolError" class="error"></p>
+
+            <label for="age">Age</label>
+            <input
+                 type="number"
+                 name="age"
+                 id="age"
+                 placeholder="Enter your age"
+                 autocomplete="age">
+             <p id="ageError" class="error"></p>
+
+             <label for="gender">Gender</label>
+             <select class="gender" name="gender" id="gender">
+                <option value="">select gender</option>
+                <option value="male">male</option>
+                <option value="female">Female</option>
+             </select>
+             <p id="genderError" class="error"></p>
+
+             <button type="submit" id="bnt">Register</button>
+        </form>
+    </main>
+
+    <script>
+        const username = "ayto";
+        const school = "Alhuda";
+    
+        const form = document.getElementById("registrationForm");
+        const usernameInput = document.getElementById("username");
+        const schoolInput = document.getElementById("school");
+        const ageInput = document.getElementById("age");
+        const gender = document.getElementById("gender");
+
+        function validate(){
+            let isValid = true;
+
+            // Username
+            if(usernameInput.value.trim() === ""){
+                document.getElementById("usernameError").textContent = "enter your name";
+                isValid = false;
+            }
+            else if(usernameInput.value.trim() !== username){
+                document.getElementById("usernameError").textContent ="invalid username";
+                isValid = false;
+            }
+            else{
+                document.getElementById("usernameError").textContent = "";
+            }
+
+            // School
+            if(schoolInput.value.trim() === ""){
+                document.getElementById("schoolError").textContent = "enter your school";
+                isValid = false;
+            }else if(schoolInput.value.trim() !== school){
+                document.getElementById("schoolError").textContent = "invalid school";
+                isValid = false;
+            }else{
+                document.getElementById("schoolError").textContent = "";
+            }
+
+            // Age
+            if(ageInput.value.trim() === ""){
+                document.getElementById("ageError").textContent = "enter your age";
+                isValid = false;
+            }else{
+                document.getElementById("ageError").textContent = "";
+            }
+
+            // Gender
+            if(gender.value === ""){
+                document.getElementById("genderError").textContent = "select gender";
+                isValid = false;
+            }else{
+                document.getElementById("genderError").textContent = "";
+            }
+
+            return isValid;
+        }
+
+        // QAYBTA CILADDA KAA SAARTAY:
+        form.addEventListener("submit", (e) => {
+            // Haddii foomku khaldan yahay, stop garee page refresh-ka
+            if (!validate()) {
+                e.preventDefault(); 
+            } else {
+                e.preventDefault(); // Sababtoo ah ma hayno server run ah hadda
+                alert("Diiwaangelintu waa guul! Macluumaadku waa sax.");
+            }
+        });
+
+        // Saacadaba ciladda u baabi'i marka uu qofku wax saxayo
+        usernameInput.addEventListener("input", () => {
+          document.getElementById("usernameError").textContent = "";
+        });
+        schoolInput.addEventListener("input", () => {
+          document.getElementById("schoolError").textContent = "";
+        });
+        ageInput.addEventListener("input", () => {
+          document.getElementById("ageError").textContent = "";
+        });
+        gender.addEventListener("change", () => {
+          document.getElementById("genderError").textContent = "";
+        });
+    </script>
+</body>
+</html>

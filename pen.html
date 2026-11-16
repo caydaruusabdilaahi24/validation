@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pen and pepar</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+           
+        }
+        main{
+            margin-top: 130px;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .card{
+            background-color: beige;
+            box-shadow: 10px;
+            border-radius: 10px;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding:20px;
+        }
+        .logo{
+            background-color: blue;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            margin: 10px 10px;
+        }
+        .card h1:nth-child(2){
+            color: blue;
+            margin: 10px 10px;
+        }
+        .card :nth-child(2),h2{
+            color: blue;
+
+        }
+        .card:nth-child(2),h2{
+            margin-bottom: 12px;
+        }
+        p{
+            margin-bottom: 13px;
+            color: rgb(3, 126, 233);
+        }
+        form{
+            width: 100%;
+
+        }
+        form label{
+            color: rgb(9, 9, 9);
+        }
+        form input,
+        form button{
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 14px;
+            width: 100%;
+            padding: 6px;
+            border: 1px solid black;
+            border-radius: 11px;
+        }
+        button{
+            background-color: blue;
+            color: white;
+        }
+        button:hover{
+            background-color: blueviolet;
+
+        }
+        .card :nth-child(2) button:hover{
+            background-color: blueviolet;
+        }
+        #logout{
+               display: block;
+            margin-top: 14px;
+            margin-bottom: 14px;
+            width: 100%;
+            padding: 6px;
+            border: 1px solid black;
+            border-radius: 11px;
+
+        }
+      #username-name{
+        color: blue;
+
+        }
+        .hidden{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+      <main>
+      <div class="card">
+        <h1 class="logo">UI</h1>
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue to your account</p>
+
+        <form action="#">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            autocomplete="username"
+          />
+          <p id="username-error"></p>
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Your password"
+            autocomplete="current-password"
+          />
+          <p id="password-error"></p>
+
+          <button type="submit" id="login">Login</button>
+        </form>
+      </div>
+
+      <div class="card hidden">
+        <h1 class="logo">UI</h1>
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue to your account</p>
+
+        <h2>Welcome, <span id="username-name"></span>!</h2>
+        <p>You have successfully logged in to your account</p>
+
+        <button type="button" id="logout">Logout</button>
+      </div>
+    </main>
+
+<script>
+    const username = "student";
+const password = 12345;
+
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+
+function validateForm() {
+  let isValid = true;
+
+  if (usernameInput.value === "") {
+    document.getElementById("username-error").textContent =
+      "Enter your username";
+    isValid = false;
+
+  } else if (usernameInput.value !== username) {
+    document.getElementById("username-error").textContent = "Invalid username";
+    isValid = false;
+    
+  } else {
+    document.getElementById("username-error").textContent = "";
+  }
+
+  if (Number(passwordInput.value) === "") {
+    document.getElementById("password-error").textContent =
+      "Enter your password";
+    isValid = false;
+  } else if (Number(passwordInput.value) !== password) {
+    document.getElementById("password-error").textContent = "Invalid password";
+    isValid = false;
+  } else {
+    document.getElementById("password-error").textContent = "";
+  }
+
+//   document.getElementById("username-name").textContent = usernameInput.value; 
+
+  /* 
+    // labadan wan u comment gareeyey sababtoo ah hadaan tusale ahan username ka aan saxo oon qaldo password ka username ka wuu baabiinayaa,
+    // password kana sidoo kale.
+    // lakin waa la xalin karaa, so try it.
+
+    usernameInput.value = "";
+    passwordInput.value = "";
+  */
+
+  return isValid;
+}
+
+const logInBtn = document.getElementById("login");
+
+usernameInput.addEventListener("input", () => {
+  document.getElementById("username-error").textContent = "";
+});
+passwordInput.addEventListener("input", () => {
+  document.getElementById("password-error").textContent = "";
+});
+logInBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (validateForm() === true) {
+    document.querySelector(".card:first-of-type").classList.add("hidden");
+    document.querySelector(".card:last-of-type").classList.remove("hidden");
+  }
+});
+
+const logoutBtn = document.getElementById("logout");
+
+logoutBtn.addEventListener("click", () => {
+  usernameInput.value = "";
+  passwordInput.value = "";
+  document.querySelector(".card:first-of-type").classList.remove("hidden");
+  document.querySelector(".card:last-of-type").classList.add("hidden");
+});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>last thinking</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            margin: auto;
+            width: 400px;
+            min-height: 100%;
+            background-color: rgb(16, 226, 226);
+            padding: 20px 20px;
+            margin-top: 40px;
+        }
+        .logo{
+            width: 110px;
+            height: 100px;
+            border: 1px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+            color: white;
+            margin: auto;
+
+        }
+        .card,p{
+            
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            
+        }
+        p{
+            background-color: blue;
+            color: white;
+            border-radius: 4px;
+            padding: 5px 5px;
+            border: 1px;
+        }
+        form p{
+            background-color: rgb(16, 226, 226);
+        }
+        form{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        label{
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        form input,
+        form button{
+            display: block;
+            width: 100%;
+            height: 25px;
+            
+        }
+        button{
+            background-color: blue;
+            color: white;
+        }
+        .hidden{
+            display: none;
+        }
+        .skip{
+            
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-color: blue;
+            color: white;
+
+        }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="card">
+            <h1 class="logo">Alhuda</h1>
+            <h1>welcome open hands </h1>
+            <p>ladies and gentelmand, today talk about new students in alhuda secondary school</p>
+
+            <form id="frm">
+                <label for="username">username</label>
+                <input id="username" type="text" name="username" placeholder="enter your username">
+                <p id="usernameError" class="error"></p>
+
+                <label for="password">password</label>
+                <input id="password" type="password" name="password" placeholder="enter your username">
+                <p id="passwordError" class="error"></p>
+
+                <label for="age">age</label>
+                <input id="age" type="number" name="age" placeholder="enter your age">
+                <p id="ageError" class="errro"></p>
+
+                <button type="submit" id="register">Register</button>
+            </form>
+        </div>
+
+        <div class="card hidden">
+            <h1 class="logo">alhuda</h1>
+            <h1>welcome Back</h1>
+            <p>you successfull to register Alhuda secondary school</p>
+
+            <button type="submit" id="skip" class="skip" >skip</button>
+
+        </div>
+    </main>
+
+    <script>
+
+        const username = "caydaruus";
+        const password = 12345;
+
+
+
+const frm = document.getElementById("frm");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const ageInput = document.getElementById("age");
+
+const usernameError = document.getElementById("usernameError");
+const passwordError = document.getElementById("passwordError");
+const ageError = document.getElementById("ageError");
+
+frm.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    let isValid = true;
+
+    if (usernameInput.value.trim()===""){
+        usernameError.textContent = "fadlan waxaad gelisaa magac";
+        isValid = false;
+    }
+    else if(usernameInput.value!== username){
+        usernameError.textContent = "username invalid";
+        isValid = false;
+    }
+    else{
+        usernameError.textContent = ""
+    }
+    if(Number(passwordInput.value.trim())===""){
+        passwordError.textContent ="fadlan waxaa galisaa password";
+        isValid = false;
+    
+    }else if(Number(passwordInput.value.trim())!== password){
+        passwordError.textContent = "password invalid"
+        isValid = false;
+
+    }
+    else{
+        passwordError.textContent ="";
+    }
+    if(ageInput.value===""){
+        ageError.textContent = "waxaad gelisaa age kaaga";
+        ageError.style.color = "red";
+        isValid = false;
+    }
+    else if(ageInput.value >=25){
+        ageError.textContent ="madhigan kartid";
+        ageError.style.color = "red";
+        isValid = false;
+    }
+    else{
+        ageError.textContent ="";
+    }
+    if (isValid === true) {
+                document.querySelector(".card:first-of-type").classList.add("hidden");
+                document.querySelector(".card:last-of-type").classList.remove("hidden");
+            }
+            const skip = document.getElementById("skip")
+            skip.addEventListener("click",()=>{
+                document.querySelector(".card:first-of-type").classList.remove("hidden");
+                document.querySelector(".card:last-of-type").classList.add("hidden");
+
+            })
+
+//     const register = document.getElementById("register");
+//     register.addEventListener("input",()=>{
+
+        
+//   if (frm() === true) {
+//     document.querySelector(".card:first-of-type").classList.add("hidden");
+//     document.querySelector(".card:last-of-type").classList.remove("hidden");
+//   }
+        
+    })
+    
+
+
+
+
+        
+    
+    </script>
+</body>
+</html>

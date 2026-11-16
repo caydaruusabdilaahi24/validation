@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Font Family */
+  --font-family: "Inter", sans-serif;
+
+  /* Colors */
+  --color-primary: #3563e9;
+  --color-primary-hover: #2552d4;
+  --color-heading-blue: #2b5bd7;
+  --color-text-dark: #2a323d;
+  --color-text-muted: #667085;
+  --color-bg-page: #f5f7fa;
+  --color-bg-card: #ffffff;
+  --color-border: #e2e8f0;
+
+  /* Layout & Shadows */
+  --radius-card: 16px;
+  --radius-input: 8px;
+  --radius-button: 8px;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-bg-page);
+}
+
+.card {
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+
+  min-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+}
+
+.logo {
+  background-color: var(--color-primary);
+  color: var(--color-bg-card);
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  margin-bottom: 1rem;
+}
+
+.card h1:nth-child(2) {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+.card:nth-child(2),
+h2 {
+  color: var(--color-primary);
+}
+.card:nth-child(2) h2 {
+  margin-bottom: 1rem;
+}
+p {
+  margin-bottom: 2rem;
+  color: var(--color-text-muted);
+}
+form {
+  width: 100%;
+}
+form label {
+  color: var(--color-text-dark);
+}
+form p {
+  color: red;
+}
+form input,
+form button {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  width: 100%;
+  padding: 0.6rem 0.4rem;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-border);
+}
+form button {
+  background-color: var(--color-primary);
+  color: var(--color-bg-card);
+  font-weight: bold;
+}
+button {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.card:nth-child(2) button {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  width: 100%;
+  padding: 0.6rem 0.4rem;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-primary);
+  color: var(--color-bg-card);
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+button:hover {
+  background-color: var(--color-primary-hover);
+}
+.card:nth-child(2) button:hover {
+  background-color: var(--color-primary-hover);
+}
+#username-name {
+  color: var(--color-text-muted);
+}
+.hidden {
+  display: none;
+}
+    <!-- <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        main{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(229, 221, 221);
+        }
+        .card{
+            background-color: white;
+            box-shadow: 12px;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            height: 370px;
+            
+
+        }
+        .logo{
+            width: 60px;
+            height: 60px;
+            background-color: blue;
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .card h2{
+            color: blue;
+            margin-bottom: 8px;
+        }
+
+        .hidden{
+            display: none;
+        }
+        form{
+            width: 100%;
+        }
+         p{
+            margin-bottom: 18px;
+    
+        }
+         #password-error{
+            color: red;
+         }
+        form input,
+        form button,button{
+            display: block;
+            min-width: 100%;
+            padding: 4px 4px;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            border: 1px solid rgb(29, 27, 27);
+            border-radius: 5px;
+            height: 30px;
+
+        }
+        button{
+            background-color: blue;
+            color: white;
+        }
+        .hidden{
+            display: none;
+            min-width: 100%;
+            padding: 4px 4px;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            border: 1px solid rgb(29, 27, 27);
+            border-radius: 5px;
+            height: 30px;
+        } -->
+    </style>
+</head>
+
+<body>
+
+     <main>
+      <div class="card">
+        <h1 class="logo">UI</h1>
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue to your account</p>
+
+        <form action="#">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            autocomplete="username"
+          />
+          <p id="username-error"></p>
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Your password"
+            autocomplete="current-password"
+          />
+          <p id="password-error"></p>
+
+          <button type="submit" id="login">Login</button>
+        </form>
+      </div>
+
+      <div class="card hidden">
+        <h1 class="logo">UI</h1>
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue to your account</p>
+
+        <h2>Welcome, <span id="username-name"></span>!</h2>
+        <p>You have successfully logged in to your account</p>
+
+        <button type="button" id="logout">Logout</button>
+      </div>
+    </main>
+<!-- <body>
+    <main>
+     <div class="card">   
+        <h1 class="logo">UI</h1>
+        <h2>welcome Back</h2>
+        <p>sing in to continue tob your account</p>
+
+
+        <form action="">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" placeholder="Enter your username">
+            <p id="username-error"></p>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="Enter your password">
+            <p id="password-error"></p>
+            
+            <button type="submit" id="login">Login</button>
+
+
+        </form> 
+        
+        </div>
+        <div class="card hidden ">
+        <h1 class="logo">UI</h1>
+        <h2>welcome Back</h2>
+        <p>sing in to continue tob your account</p>
+
+         <h2>Welcome, <span id="username-name"></span>!</h2>
+        <p>You have successfully logged in to your account</p>
+        
+
+
+        <button id="Logout" type="submit"> logout</button>
+
+        </div>
+
+     
+    </main> -->
+    
+<script>
+    const username = "student";
+const password = 12345;
+
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+
+function validateForm() {
+  let isValid = true;
+
+  if (usernameInput.value === "") {
+    document.getElementById("username-error").textContent =
+      "Enter your username";
+    isValid = false;
+
+  } else if (usernameInput.value !== username) {
+    document.getElementById("username-error").textContent = "Invalid username";
+    isValid = false;
+    
+  } else {
+    document.getElementById("username-error").textContent = "";
+  }
+
+  if (Number(passwordInput.value) === "") {
+    document.getElementById("password-error").textContent =
+      "Enter your password";
+    isValid = false;
+  } else if (Number(passwordInput.value) !== password) {
+    document.getElementById("password-error").textContent = "Invalid password";
+    isValid = false;
+  } else {
+    document.getElementById("password-error").textContent = "";
+  }
+
+  document.getElementById("username-name").textContent = usernameInput.value;
+
+  /* 
+    // labadan wan u comment gareeyey sababtoo ah hadaan tusale ahan username ka aan saxo oon qaldo password ka username ka wuu baabiinayaa,
+    // password kana sidoo kale.
+    // lakin waa la xalin karaa, so try it.
+
+    usernameInput.value = "";
+    passwordInput.value = "";
+  */
+
+  return isValid;
+}
+
+const logInBtn = document.getElementById("login");
+
+usernameInput.addEventListener("input", () => {
+  document.getElementById("username-error").textContent = "";
+});
+passwordInput.addEventListener("input", () => {
+  document.getElementById("password-error").textContent = "";
+});
+logInBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (validateForm() === true) {
+    document.querySelector(".card:first-of-type").classList.add("hidden");
+    document.querySelector(".card:last-of-type").classList.remove("hidden");
+  }
+});
+
+const logoutBtn = document.getElementById("logout");
+
+logoutBtn.addEventListener("click", () => {
+  usernameInput.value = "";
+  passwordInput.value = "";
+  document.querySelector(".card:first-of-type").classList.remove("hidden");
+  document.querySelector(".card:last-of-type").classList.add("hidden");
+});
+</script>
+
+<!-- <script>
+    
+    const username = "student";
+    const password = 12345;
+
+    const usernameInput = document.getElementById("username")
+    const passwordInput = document.getElementById("password")
+    const usernameerror = document.getElementById("username-error")
+    const passworderror = document.getAnimations("password-error")
+
+    
+    
+    function validateform(){
+        let isValid = true;
+
+        if(usernameInput.value ===""){
+        usernameerror.textContent = "Enter your username";
+        isValid = false;
+
+        }
+        else if(usernameInput.value !== username){
+            usernameerror.textContent = "invalid username";
+            isValid = false;
+        }
+        else{
+            usernameerror.textContent = "";
+        }
+
+        if(Number(passwordInput.value) ===""){
+            passworderror.textContent ="Enter your password";
+            isValid = false;
+        }
+        else if(Number(passwordInput.value) !== password){
+            passworderror.textContent ="invalid password";
+            isValid = false;
+        }
+        else{
+            passworderror.textContent = "";
+        }
+        document.getElementById("username-name").textContent = usernameInput.value;
+
+
+
+
+            return isValid;
+    }
+
+    const loginbtn = document.getElementById("login");
+
+    usernameInput.addEventListener("input", () =>{
+        usernameerror.textContent = "";
+    } );
+    passwordInput.addEventListener("input", () =>{
+        passworderror.textContent = "";
+
+    });
+    loginbtn.addEventListener("click", (e) =>{
+      e.preventDefault();
+
+      if(validateform()===true){
+        document.querySelector(".card:first-of-type").classList.add("hidden");
+        document.querySelector(".card:last-of-type").classList.remove("hidden");
+      }
+    }); -->
+
+
+</script>
+</body>
+</html>
